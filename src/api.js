@@ -17,9 +17,15 @@ export const fetchArticleById = (article_id) => {
 };
 
 export const fetchCommentsByArticleId = (article_id) => {
-  return api.get(`/articles/${article_id}/comments`).then(({ data: {comments} }) => {
-    return comments;
-  });
+  return api.get(`/articles/${article_id}/comments`).then(({ data: {comments} }) => comments);
 };
 
-fetchCommentsByArticleId(1)
+export const changeVotesOnArticle = (vote, article_id) => {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes: vote })
+    .then(({ data: { updated } }) => {
+      console.log(updated)
+      return updated
+    });
+};
+

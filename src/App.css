@@ -110,6 +110,26 @@
   max-width: 100%;
   height: auto;
 }
+
+.single-article__votes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-article__votes p {
+  margin: 5px;
+}
+
+.single-article__votes button {
+  margin: 2px; 
+}
+
+.single-article__error {
+  background-color: rgba(218, 96, 96, 0.397);
+  text-align: center;
+}
+
 /* >>>>>>>>>>>>>>>>>>>>>>>>> HEADER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 .header {
