@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchArticles } from "../../api";
 import { ArticleCard } from "./ArticleCard";
-import "./Articles.css";
 
 export const Articles = () => {
   const [searchOptions, setSearchOptions] = useState("null");
