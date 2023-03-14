@@ -16,8 +16,9 @@ export const Comments = ({ article_id }) => {
   return (
     <div className={`${theme}`}>
       <h2>Comments</h2>
-      {comments.map((comment) => (
+      {comments.map((comment, index) => (
         <Card
+        key={index}
           sx={{
             marginTop: 2,
             backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
@@ -28,6 +29,12 @@ export const Comments = ({ article_id }) => {
             <h4>{comment.author}</h4>
             <p>{comment.body}</p>
             <p>{new Date(comment.created_at).toLocaleDateString()}</p>
+            <p>
+              {new Date(comment.created_at).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
             <p>comment votes: {comment.votes}</p>
           </CardContent>
         </Card>

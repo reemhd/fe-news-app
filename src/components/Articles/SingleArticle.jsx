@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../../api";
-import { Card, CardMedia } from "@mui/material";
+import { fetchArticleById, changeVotesOnArticle } from "../../api";
+import { Card, Typography } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
 import { Comments } from "./Comments";
 
@@ -9,12 +9,36 @@ export const SingleArticle = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const { theme } = useContext(ThemeContext);
+  const [votes, setVotes] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchArticleById(article_id)
-      .then((article) => setArticle(article))
+      .then((article) => {
+        setArticle(article);
+        setVotes(article.votes);
+      })
       .catch((err) => console.log(err));
   }, [article_id]);
+
+  const handleVote = (vote) => {
+    setVotes((prevVotes) => prevVotes + vote);
+    const newVotes = votes + vote;
+    setArticle((prevArticle) => ({ ...prevArticle, votes: newVotes }));
+    changeVotesOnArticle(vote, article_id)
+      .then((updatedArticle) => {
+        setVotes(updatedArticle.votes);
+      })
+      .catch((err) => {
+        console.log(err);
+        setVotes(votes);
+        setError('You vote did not count, please try again')
+      });
+  };
+
+  const handleCloseError = () => {
+    setError(null);
+  };
 
   if (!article) {
     return <div>Loading...</div>;
@@ -40,7 +64,16 @@ export const SingleArticle = () => {
           className="single-article__img"
         />
         <p className="single-article__body">{article.body}</p>
-        <p>Article votes: {article.votes}</p>
+        <div className="single-article__votes">
+          <p>Article votes: {article.votes}</p>
+          <button onClick={() => handleVote(1)}>+</button>
+          <button onClick={() => handleVote(-1)}>-</button>
+        </div>
+        {error && (
+          <Typography className="single-article__error" color="error">
+            {error}
+          </Typography>
+        )}
         <Comments article_id={article_id} />
       </Card>
     </div>
