@@ -13,7 +13,7 @@ export const ArticleCard = ({ article }) => {
   } = article;
   return (
     <li key={article_id} className="article-card">
-      <Link to={`/articles/${article_id}`}>
+      <Link to={`/articles/${article_id}`} className="article-card__link">
         <h2>{title}</h2>
         <h3>{author}</h3>
         <img
