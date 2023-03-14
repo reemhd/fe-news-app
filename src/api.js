@@ -7,8 +7,15 @@ const api = axios.create({
 export const fetchArticles = (currentPage) => {
   return api
     .get(`/articles?limit=10&p=${currentPage}`)
-    .then(({ data: { articles } }) => {
-        console.log(articles)
-      return articles;
+    .then(({ data: { articles } }) => articles);
+};
+
+export const fetchArticleById = (article_id) => {
+  return api
+    .get(`/articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      console.log(article)
+      return article;
+
     });
 };
