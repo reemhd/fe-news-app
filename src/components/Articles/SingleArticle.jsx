@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../../api";
-import { Card } from "@mui/material";
+import { Card, CardMedia } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
+import { Comments } from "./Comments";
 
 export const SingleArticle = () => {
   const { article_id } = useParams();
@@ -39,8 +40,8 @@ export const SingleArticle = () => {
           className="single-article__img"
         />
         <p className="single-article__body">{article.body}</p>
-        <p>Votes: {article.votes}</p>
-        <p>Comments: {article.comment_count}</p>
+        <p>Article votes: {article.votes}</p>
+        <Comments article_id={article_id} />
       </Card>
     </div>
   );

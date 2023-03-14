@@ -39,7 +39,7 @@
 }
 
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .dark {
@@ -88,6 +88,11 @@
   max-width: 100%;
   height: auto;
   margin: 10px 0;
+}
+
+.article-card__link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .single-article {

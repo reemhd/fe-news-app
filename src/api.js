@@ -11,11 +11,15 @@ export const fetchArticles = (currentPage) => {
 };
 
 export const fetchArticleById = (article_id) => {
-  return api
-    .get(`/articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      console.log(article)
-      return article;
-
-    });
+  return api.get(`/articles/${article_id}`).then(({ data: { article } }) => {
+    return article;
+  });
 };
+
+export const fetchCommentsByArticleId = (article_id) => {
+  return api.get(`/articles/${article_id}/comments`).then(({ data: {comments} }) => {
+    return comments;
+  });
+};
+
+fetchCommentsByArticleId(1)
