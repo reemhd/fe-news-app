@@ -11,6 +11,7 @@ export const ArticleCard = ({ article }) => {
     article_img_url,
     comment_count,
     votes,
+    created_at
   } = article;
 
   return (
@@ -18,6 +19,7 @@ export const ArticleCard = ({ article }) => {
       <Link to={`/articles/${article_id}`} className="article-card__link">
         <h2>{title}</h2>
         <h3>{author}</h3>
+        <p>{new Date(created_at).toLocaleDateString()}</p>
         <img
           src={article_img_url}
           alt="article img"

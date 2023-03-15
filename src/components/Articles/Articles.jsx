@@ -4,10 +4,11 @@ import { ArticleCard } from "./ArticleCard";
 import { CircularProgress } from "@mui/material";
 import { TopicsPanel } from "./TopicsPanel";
 import { useLocation } from "react-router-dom";
-
+import { SortPanel } from "./SortPanel";
 
 export const Articles = () => {
-  // const [searchOptions, setSearchOptions] = useState("null");
+  const [sortby, setSortBy] = useState('')
+  const [order, setOrder] = useState('')
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
@@ -16,23 +17,22 @@ export const Articles = () => {
     return new URLSearchParams(useLocation().search);
   }
 
-  const query = useQuery()
-  const topic = query.get('topic')
+  const query = useQuery();
+  const topic = query.get("topic");
 
-   useEffect(() => {
-     setIsLoading(true);
-     fetchArticles(currentPage, topic)
-       .then((fetchedArticles) => {
-         if (currentPage === 1) {
-           setArticles(fetchedArticles);
-         } else {
-           setArticles((prevArticles) => [...prevArticles, ...fetchedArticles]);
-         }
-       })
-       .catch((error) => console.error(error))
-       .finally(() => setIsLoading(false));
-   }, [currentPage, topic]);
-
+  useEffect(() => {
+    setIsLoading(true);
+    fetchArticles(currentPage, topic, sortby, order)
+      .then((fetchedArticles) => {
+        if (currentPage === 1) {
+          setArticles(fetchedArticles);
+        } else {
+          setArticles((prevArticles) => [...prevArticles, ...fetchedArticles]);
+        }
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
+  }, [currentPage, topic, sortby, order]);
 
   useEffect(() => {
     function handleScroll() {
@@ -46,19 +46,17 @@ export const Articles = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   return (
     <>
       <div>
         <TopicsPanel />
+        <SortPanel setSortBy={setSortBy} setOrder={setOrder} />
       </div>
       <div className="articles-container">
         <ul className="articles-container__list">
           {articles.map((article, index) => (
-            <ArticleCard
-              key={index}
-              article={article}
-            />
+            <ArticleCard key={index} article={article} />
           ))}
         </ul>
         {isLoading && (
