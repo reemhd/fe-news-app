@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById, changeVotesOnArticle } from "../../api";
-import { Card, Typography } from "@mui/material";
+import { Card, Typography, CircularProgress } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
 import { Comments } from "./Comments";
 
@@ -37,7 +37,11 @@ export const SingleArticle = () => {
   };
 
   if (!article) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading">
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (

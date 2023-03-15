@@ -91,6 +91,12 @@
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> ARTICLES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+.loading {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+}
 
 .articles-container {
     width: 100%;
@@ -173,4 +179,8 @@
 
 .comment-adder__user-submit__button {
   height: 30px;
+}
+
+.comment-adder__user-submit__button__outline {
+  border: 1px solid white !important;
 }
