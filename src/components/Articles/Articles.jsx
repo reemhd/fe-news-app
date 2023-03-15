@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchArticles } from "../../api";
 import { ArticleCard } from "./ArticleCard";
+import { CircularProgress } from "@mui/material";
 
 export const Articles = () => {
   const [searchOptions, setSearchOptions] = useState("null");
@@ -41,7 +42,12 @@ export const Articles = () => {
           <ArticleCard key={index} article={article} />
         ))}
       </ul>
-      {isLoading && <p className="loading-message">Loading...</p>}
+      {isLoading && (
+        <div className="loading">
+          <CircularProgress />
+        </div>
+      )}
     </div>
   );
 };
+

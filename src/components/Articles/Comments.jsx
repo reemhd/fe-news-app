@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { fetchCommentsByArticleId } from "../../api";
 import { Card, CardContent } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
+import { CommentAdder } from "./CommentAdder";
 
 export const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -16,9 +17,10 @@ export const Comments = ({ article_id }) => {
   return (
     <div className={`${theme}`}>
       <h2>Comments</h2>
+      <CommentAdder article_id={article_id} setComments={setComments} />
       {comments.map((comment, index) => (
         <Card
-        key={index}
+          key={index}
           sx={{
             marginTop: 2,
             backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
