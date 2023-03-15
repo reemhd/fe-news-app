@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export const ArticleCard = ({ article }) => {
   const {
     article_id,
@@ -11,6 +12,7 @@ export const ArticleCard = ({ article }) => {
     comment_count,
     votes,
   } = article;
+
   return (
     <li key={article_id} className="article-card">
       <Link to={`/articles/${article_id}`} className="article-card__link">

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { postCommentByArticleId } from "../../api";
+import { postCommentByArticleId } from "../../utils/api";
 import {
   TextField,
   Button,
@@ -92,7 +92,6 @@ export const CommentAdder = ({ article_id, setComments }) => {
               backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
               color: theme === "dark" ? "#fbfbfb" : "#161c1d",
               border: theme === "dark" ? "1px solid white" : "",
-
             }}
           >
             <MenuItem value="" disabled>
