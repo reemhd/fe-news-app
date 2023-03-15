@@ -29,3 +29,12 @@ export const changeVotesOnArticle = (vote, article_id) => {
     });
 };
 
+export const postCommentByArticleId = (username, newComment, article_id) => {
+  return api
+    .post(`/articles/${article_id}/comments`, { username, body: newComment })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+}
+

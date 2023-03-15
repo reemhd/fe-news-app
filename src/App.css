@@ -33,6 +33,38 @@
   }
 } */
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>> HEADER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(59, 58, 61);
+}
+
+.header img {
+    height: 2rem;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer__bottom_nav {
+  background-color: rgb(59, 58, 61) !important;
+}
+
+.MuiBottomNavigationAction-label {
+  color: white;
+}
+
+
 /* >>>>>>>>>>>>>>>>>>>>>>>>> THEME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 :root {
   --border-color: #000;
@@ -130,33 +162,15 @@
   text-align: center;
 }
 
-/* >>>>>>>>>>>>>>>>>>>>>>>>> HEADER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgb(59, 58, 61);
+/* >>>>>>>>>>>>>>>>>>>>>>>>> Comments <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.comment-adder__user-submit {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
 }
 
-.header img {
-    height: 2rem;
-}
-
-/* >>>>>>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.footer__bottom_nav {
-  background-color: rgb(59, 58, 61) !important;
-}
-
-.MuiBottomNavigationAction-label {
-  color: white;
+.comment-adder__user-submit__button {
+  height: 30px;
 }

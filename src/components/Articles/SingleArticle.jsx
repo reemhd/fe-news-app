@@ -36,10 +36,6 @@ export const SingleArticle = () => {
       });
   };
 
-  const handleCloseError = () => {
-    setError(null);
-  };
-
   if (!article) {
     return <div>Loading...</div>;
   }
