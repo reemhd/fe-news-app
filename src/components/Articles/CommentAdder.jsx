@@ -3,40 +3,38 @@ import { postCommentByArticleId } from "../../utils/api";
 import {
   TextField,
   Button,
-  MenuItem,
-  Select,
   CircularProgress,
   Alert,
 } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
+import { CurrentUserContext } from "../../context/CurrentUser";
 
 export const CommentAdder = ({ article_id, setComments }) => {
   const [newComment, setNewComment] = useState("");
-  // change below after auth set up
-  const [username, setUsername] = useState("");
   const [isAddingComment, setIsAddingComment] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null)
   const { theme } = useContext(ThemeContext);
 
-  const users = [
-    "tickle122",
-    "grumpy19",
-    "happyamy2016",
-    "cooljmessy",
-    "weegembump",
-    "jessjelly",
-    "choose for error",
-  ];
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const removeMessage = () => {
+    setSuccess(null)
+    setError(null)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const username = currentUser.username;
     setIsAddingComment(true); 
     postCommentByArticleId(username, newComment, article_id)
       .then((data) => {
         setComments((prevComments) => [data.comment, ...prevComments]);
-        setUsername("");
         setNewComment("");
         setIsAddingComment(false);
+        setError(null);
+        setSuccess('Comment Added!')
+        setTimeout(removeMessage, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -49,23 +47,20 @@ export const CommentAdder = ({ article_id, setComments }) => {
     setNewComment(e.target.value);
   };
 
-  const handleUserSelect = (e) => {
-    setUsername(e.target.value);
-  };
-
   return (
     <div>
       {error && <Alert severity="error">{error}</Alert>}
+      {success && <Alert severity="success">{success}</Alert>}
       <br></br>
       <form onSubmit={handleSubmit}>
         <TextField
           id="comment-adder"
           label="Add Comment"
           multiline
-          required
           value={newComment}
           onChange={handleCommentChange}
           variant="outlined"
+          required
           fullWidth
           sx={{
             backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
@@ -81,30 +76,8 @@ export const CommentAdder = ({ article_id, setComments }) => {
           }}
         />
         <div className="comment-adder__user-submit">
-          <Select
-            id="user-select"
-            value={username}
-            onChange={handleUserSelect}
-            displayEmpty
-            sx={{
-              width: 140,
-              height: 30,
-              backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
-              color: theme === "dark" ? "#fbfbfb" : "#161c1d",
-              border: theme === "dark" ? "1px solid white" : "",
-            }}
-          >
-            <MenuItem value="" disabled>
-              Select User
-            </MenuItem>
-            {users.map((user) => (
-              <MenuItem value={user} key={user}>
-                {user}
-              </MenuItem>
-            ))}
-          </Select>
           {isAddingComment ? (
-            <CircularProgress />
+            <CircularProgress size={20} sx={{ ml: 2 }} />
           ) : (
             <Button
               type="submit"

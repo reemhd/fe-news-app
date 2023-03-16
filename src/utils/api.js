@@ -4,26 +4,25 @@ const api = axios.create({
   baseURL: `https://backend-project-news-api.onrender.com/api/`,
 });
 
-  export const fetchArticles = (currentPage, topic = null, sort_by, order) => {
-    const queryParams = {
-      limit: 10,
-      p: currentPage
-    }
-    if (sort_by) queryParams['sort_by'] = sort_by;
-    if (order) queryParams['order'] = order;
-    if (topic) queryParams['topic'] = topic
+export const fetchArticles = (currentPage, topic = null, sort_by, order) => {
+  const queryParams = {
+    limit: 10,
+    p: currentPage,
+  };
+  if (sort_by) queryParams["sort_by"] = sort_by;
+  if (order) queryParams["order"] = order;
+  if (topic) queryParams["topic"] = topic;
 
-    const queryString = Object.entries(queryParams)
-      .map(([k, v]) => `${k}=${v}`)
-      .join("&")
+  const queryString = Object.entries(queryParams)
+    .map(([k, v]) => `${k}=${v}`)
+    .join("&");
 
-    const url = `/articles?${queryString}`
+  const url = `/articles?${queryString}`;
 
-    return api.get(url).then(({ data: { articles } }) => {
-      return articles;
+  return api.get(url).then(({ data: { articles } }) => {
+    return articles;
   });
 };
-
 
 export const fetchArticleById = (article_id) => {
   return api.get(`/articles/${article_id}`).then(({ data: { article } }) => {
@@ -56,5 +55,15 @@ export const postCommentByArticleId = (username, newComment, article_id) => {
 export const fetchAllTopics = () => {
   return api.get("/topics").then(({ data: { topics } }) => {
     return topics;
+  });
+};
+
+export const deleteCommentByCommentId = (comment_id) => {
+  return api.delete(`comments/${comment_id}`);
+};
+
+export const fetchUserByUsername = (username) => {
+  return api.get(`/users/${username}`).then(({ data: {user} }) => {
+    return user;
   });
 };

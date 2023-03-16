@@ -47,6 +47,14 @@
   height: 2rem;
 }
 
+.header__profile {
+  padding-top: 10px;
+}
+
+.header__profile p {
+  color: white;
+}
+
 /* >>>>>>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 .footer {
@@ -181,7 +189,23 @@
 }
 
 .comment-adder__user-submit__button__outline {
-  border: 1px solid white !important;
+  box-shadow: 1px 1px 10px -2px rgba(255, 255, 255, 0.222) !important;
+  color: green !important;
+}
+
+.comment-adder__user-submit__button__outline:hover {
+  background-color: #367a028f;
+  color: white !important;
+}
+
+.comment-adder__user-delete__button__outline {
+  box-shadow: 1px 1px 10px -2px rgba(255, 255, 255, 0.222) !important;
+  color: #db1111 !important;
+}
+
+.comment-adder__user-delete__button__outline:hover {
+  background-color: #e01a1a53;
+  color: white !important;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> Topics <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
@@ -192,3 +216,15 @@
   border-radius: 4px;
 }
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>> Sign In <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.sign_in__header {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.row > * {
+  padding-top: 130px;
+  padding-bottom: 310px;
+}
