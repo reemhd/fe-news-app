@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById, changeVotesOnArticle } from "../../api";
+import { fetchArticleById, changeVotesOnArticle } from "../../utils/api";
 import { Card, Typography, CircularProgress } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
 import { Comments } from "./Comments";
@@ -32,7 +32,7 @@ export const SingleArticle = () => {
       .catch((err) => {
         console.log(err);
         setVotes(votes);
-        setError('You vote did not count, please try again')
+        setError("You vote did not count, please try again");
       });
   };
 
