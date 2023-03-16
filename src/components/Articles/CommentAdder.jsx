@@ -60,6 +60,7 @@ export const CommentAdder = ({ article_id, setComments }) => {
           value={newComment}
           onChange={handleCommentChange}
           variant="outlined"
+          required
           fullWidth
           sx={{
             backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
@@ -76,7 +77,7 @@ export const CommentAdder = ({ article_id, setComments }) => {
         />
         <div className="comment-adder__user-submit">
           {isAddingComment ? (
-            <CircularProgress />
+            <CircularProgress size={20} sx={{ ml: 2 }} />
           ) : (
             <Button
               type="submit"

@@ -77,23 +77,26 @@ export const Comments = ({ article_id }) => {
             </p>
             <p>comment votes: {comment.votes}</p>
             {currentUser.username === comment.author && (
-              <Button
-                type="submit"
-                onClick={() => handleCommentDelete(comment.comment_id)}
-                variant="contained"
-                color="grey"
-                className={
-                  theme === "dark"
-                    ? "comment-adder__user-delete__button__outline"
-                    : "comment-adder__user-delete__button"
-                }
-              >
-                Delete
-              </Button>
+              <React.Fragment>
+                {deletingCommentId === comment.comment_id ? (
+                  <CircularProgress size={20} sx={{ ml: 2 }} />
+                ) : (
+                  <Button
+                    type="submit"
+                    onClick={() => handleCommentDelete(comment.comment_id)}
+                    variant="contained"
+                    color="grey"
+                    className={
+                      theme === "dark"
+                        ? "comment-adder__user-delete__button__outline"
+                        : "comment-adder__user-delete__button"
+                    }
+                  >
+                    Delete
+                  </Button>
+                )}
+              </React.Fragment>
             )}
-            {deletingCommentId === comment.comment_id ? (
-              <CircularProgress />
-            ) : null}
           </CardContent>
         </Card>
       ))}

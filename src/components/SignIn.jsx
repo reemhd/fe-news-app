@@ -13,9 +13,11 @@ import placeholder from "../logo/placeholder.png";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import { fetchUserByUsername } from "../utils/api";
 import { CurrentUserContext } from "../context/CurrentUser";
+import { Alert } from "@mui/material";
 
 function SignIn() {
   const [username, setUsername] = useState("");
+  const [error, setError] = useState(null)
   const { setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
@@ -28,7 +30,7 @@ function SignIn() {
       })
       .catch((err) => {
         console.log(err);
-        // ADD ALERT
+        setError('Invalid username')
       });
   };
 
@@ -39,6 +41,7 @@ function SignIn() {
           <img src={placeholder} alt="logo" />
         </Link>
       </div>
+      {error && <Alert severity="error">{error}</Alert>}
       <MDBContainer fluid>
         <MDBRow className="d-flex justify-content-center align-items-center h-100">
           <MDBCol col="12">
