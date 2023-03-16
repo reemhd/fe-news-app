@@ -76,7 +76,7 @@ export const Comments = ({ article_id }) => {
               })}
             </p>
             <p>comment votes: {comment.votes}</p>
-            {currentUser.username === comment.author && (
+            {currentUser?.username === comment.author && (
               <React.Fragment>
                 {deletingCommentId === comment.comment_id ? (
                   <CircularProgress size={20} sx={{ ml: 2 }} />

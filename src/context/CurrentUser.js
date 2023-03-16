@@ -6,7 +6,7 @@ export const CurrentUserContext = createContext();
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(() => {
     const storedUser = localStorage.getItem("currentUser");
-    return storedUser ? JSON.parse(storedUser) : "";
+    return storedUser ? JSON.parse(storedUser) : null;
   });
   const navigate = useNavigate();
 
