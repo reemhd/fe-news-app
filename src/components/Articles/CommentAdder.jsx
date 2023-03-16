@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { postCommentByArticleId } from "../../api";
+import { postCommentByArticleId } from "../../utils/api";
 import {
   TextField,
   Button,
@@ -36,7 +36,7 @@ export const CommentAdder = ({ article_id, setComments }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsAddingComment(true); //
+    setIsAddingComment(true); 
     postCommentByArticleId(username, newComment, article_id)
       .then((data) => {
         setComments((prevComments) => [data.comment, ...prevComments]);

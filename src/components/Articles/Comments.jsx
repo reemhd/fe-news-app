@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { fetchCommentsByArticleId } from "../../api";
+import { fetchCommentsByArticleId } from "../../utils/api";
 import { Button, Card, CardContent } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
 import { CommentAdder } from "./CommentAdder";
