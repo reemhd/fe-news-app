@@ -40,6 +40,7 @@ export const SortPanel = ({ topic }) => {
     navigate(`/articles?sort_by=${sort_by}&order=${order}`);
   };
 
+
   return (
     <div>
       <Select

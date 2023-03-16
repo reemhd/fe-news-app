@@ -10,8 +10,10 @@ import {
 import { ThemeContext } from "../../context/Theme";
 import { CommentAdder } from "./CommentAdder";
 import { deleteCommentByCommentId } from "../../utils/api";
+import { CurrentUserContext } from "../../context/CurrentUser";
 
 export const Comments = ({ article_id }) => {
+  const { currentUser } = useContext(CurrentUserContext);
   const [comments, setComments] = useState([]);
   const { theme } = useContext(ThemeContext);
   const [deleted, setDeleted] = useState(null);
@@ -74,9 +76,7 @@ export const Comments = ({ article_id }) => {
               })}
             </p>
             <p>comment votes: {comment.votes}</p>
-            {deletingCommentId === comment.comment_id ? (
-              <CircularProgress />
-            ) : (
+            {currentUser.username === comment.author && (
               <Button
                 type="submit"
                 onClick={() => handleCommentDelete(comment.comment_id)}
@@ -91,6 +91,9 @@ export const Comments = ({ article_id }) => {
                 Delete
               </Button>
             )}
+            {deletingCommentId === comment.comment_id ? (
+              <CircularProgress />
+            ) : null}
           </CardContent>
         </Card>
       ))}
