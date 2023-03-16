@@ -16,6 +16,7 @@ export const CommentAdder = ({ article_id, setComments }) => {
   const [username, setUsername] = useState("");
   const [isAddingComment, setIsAddingComment] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null)
   const { theme } = useContext(ThemeContext);
 
   const users = [
@@ -28,6 +29,11 @@ export const CommentAdder = ({ article_id, setComments }) => {
     "choose for error",
   ];
 
+  const removeMessage = () => {
+    setSuccess(null)
+    setError(null)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsAddingComment(true); //
@@ -37,6 +43,9 @@ export const CommentAdder = ({ article_id, setComments }) => {
         setUsername("");
         setNewComment("");
         setIsAddingComment(false);
+        setError(null);
+        setSuccess('Comment Added!')
+        setTimeout(removeMessage, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -56,13 +65,13 @@ export const CommentAdder = ({ article_id, setComments }) => {
   return (
     <div>
       {error && <Alert severity="error">{error}</Alert>}
+      {success && <Alert severity="success">{success}</Alert>}
       <br></br>
       <form onSubmit={handleSubmit}>
         <TextField
           id="comment-adder"
           label="Add Comment"
           multiline
-          required
           value={newComment}
           onChange={handleCommentChange}
           variant="outlined"
@@ -92,7 +101,6 @@ export const CommentAdder = ({ article_id, setComments }) => {
               backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
               color: theme === "dark" ? "#fbfbfb" : "#161c1d",
               border: theme === "dark" ? "1px solid white" : "",
-
             }}
           >
             <MenuItem value="" disabled>

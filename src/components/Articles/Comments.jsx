@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { fetchCommentsByArticleId } from "../../api";
-import { Card, CardContent } from "@mui/material";
+import { Button, Card, CardContent } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
 import { CommentAdder } from "./CommentAdder";
 
@@ -38,6 +38,18 @@ export const Comments = ({ article_id }) => {
               })}
             </p>
             <p>comment votes: {comment.votes}</p>
+            <Button
+              type="submit"
+              variant="contained"
+              color="grey"
+              className={
+                theme === "dark"
+                  ? "comment-adder__user-delete__button__outline"
+                  : "comment-adder__user-delete__button"
+              }
+            >
+              Delete
+            </Button>
           </CardContent>
         </Card>
       ))}
