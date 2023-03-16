@@ -7,11 +7,10 @@ import { useLocation } from "react-router-dom";
 import { SortPanel } from "./SortPanel";
 
 export const Articles = () => {
-  const [sortby, setSortBy] = useState('')
-  const [order, setOrder] = useState('')
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -19,10 +18,12 @@ export const Articles = () => {
 
   const query = useQuery();
   const topic = query.get("topic");
+  const sort_by = query.get("sort_by")
+  const order = query.get('order')
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(currentPage, topic, sortby, order)
+    fetchArticles(currentPage, topic, sort_by, order)
       .then((fetchedArticles) => {
         if (currentPage === 1) {
           setArticles(fetchedArticles);
@@ -31,8 +32,11 @@ export const Articles = () => {
         }
       })
       .catch((error) => console.error(error))
-      .finally(() => setIsLoading(false));
-  }, [currentPage, topic, sortby, order]);
+      .finally(() => {
+        setIsDataLoaded(true);
+        setIsLoading(false);
+      });
+  }, [currentPage, topic, sort_by, order]);
 
   useEffect(() => {
     function handleScroll() {
@@ -51,7 +55,9 @@ export const Articles = () => {
     <>
       <div>
         <TopicsPanel />
-        <SortPanel setSortBy={setSortBy} setOrder={setOrder} />
+        {isDataLoaded && (
+          <SortPanel topic={topic}/>
+        )}
       </div>
       <div className="articles-container">
         <ul className="articles-container__list">

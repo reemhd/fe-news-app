@@ -1,10 +1,13 @@
 import React, { useState, useContext } from "react";
 import { MenuItem, Select } from "@mui/material";
 import { ThemeContext } from "../../context/Theme";
+import { useNavigate } from "react-router-dom";
 
-export const SortPanel = ({ setSortBy, setOrder }) => {
+export const SortPanel = ({ topic }) => {
   const [selectedSort, setSelectedSort] = useState("");
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+
   const sortingOptions = [
     { label: "Author (A-Z)", sort_by: "author", order: "asc" },
     { label: "Author (Z-A)", sort_by: "author", order: "desc" },
@@ -31,8 +34,10 @@ export const SortPanel = ({ setSortBy, setOrder }) => {
     const { sort_by, order } = sortingOptions.find(
       (option) => option.label === e.target.value
     );
-    setSortBy(sort_by);
-    setOrder(order);
+    if (topic) {
+      navigate(`/articles?topic=${topic}&sort_by=${sort_by}&order=${order}`);
+    }
+    navigate(`/articles?sort_by=${sort_by}&order=${order}`);
   };
 
   return (
