@@ -58,3 +58,7 @@ export const fetchAllTopics = () => {
     return topics;
   });
 };
+
+export const deleteCommentByCommentId = (comment_id) => {
+  return api.delete(`comments/${comment_id}`);
+}
