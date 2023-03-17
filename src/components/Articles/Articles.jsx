@@ -45,6 +45,10 @@ export const Articles = () => {
         document.documentElement.offsetHeight
       ) {
         setCurrentPage((prevPage) => prevPage + 1);
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
       }
     }
     window.addEventListener("scroll", handleScroll);
