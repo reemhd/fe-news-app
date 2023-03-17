@@ -85,11 +85,13 @@
   background-color: #202424;
   color: #fbfbfb;
   --border-color: #d4d2d2;
+
 }
 
 .light {
-  background-color: #fbfbfb;
+  background-color: #ffffff;
   color: #161c1d;
+
 }
 
 .ToggleLightMode--inline-text {
@@ -227,4 +229,36 @@
 .row > * {
   padding-top: 130px;
   padding-bottom: 310px;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>> Error <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.error {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 400px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .error  {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-text {
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

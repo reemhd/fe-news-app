@@ -7,7 +7,8 @@ import { ThemeContext } from "./context/Theme";
 import { useContext } from "react";
 import { SingleArticle } from "./components/Articles/SingleArticle";
 import SignIn from "./components/SignIn";
-import {SignUp} from "./components/SignUp";
+import { SignUp } from "./components/SignUp";
+import { WrongPathError } from "./components/WrongPathError";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Articles />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/*" element={<WrongPathError />} />
       </Routes>
       {!isSignInUpPage && <Footer />}
     </div>

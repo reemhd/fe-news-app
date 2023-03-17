@@ -11,6 +11,8 @@ export const SingleArticle = () => {
   const { theme } = useContext(ThemeContext);
   const [votes, setVotes] = useState(0);
   const [error, setError] = useState(null);
+  const [errorAPI, setErrorAPI] = useState(null);
+  const [errorCode, setErrorCode] = useState(null);
 
   useEffect(() => {
     fetchArticleById(article_id)
@@ -18,7 +20,10 @@ export const SingleArticle = () => {
         setArticle(article);
         setVotes(article.votes);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrorCode(err.response.status);
+        setErrorAPI(err.response.data.message);
+      });
   }, [article_id]);
 
   const handleVote = (vote) => {
@@ -32,15 +37,21 @@ export const SingleArticle = () => {
       .catch((err) => {
         console.log(err);
         setVotes(votes);
-        setError("You vote did not count, please try again");
+        setError("Your vote did not count, please try again");
       });
   };
 
-  if (!article) {
+  if (!article && !errorAPI) {
     return (
       <div className="loading">
         <CircularProgress />
       </div>
+    );
+  }
+
+  if (errorAPI) {
+    return (
+      <div className="error error-text">{`${errorCode} / ${errorAPI}`}</div>
     );
   }
 
