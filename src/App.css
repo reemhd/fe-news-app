@@ -89,7 +89,7 @@
 }
 
 .light {
-  background-color: #fbfbfb;
+  background-color: #ffffff;
   color: #161c1d;
 
 }
@@ -256,4 +256,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.error-text {
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
