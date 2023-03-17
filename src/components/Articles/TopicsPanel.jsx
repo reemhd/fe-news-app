@@ -29,7 +29,18 @@ export const TopicsPanel = () => {
         }}
       >
         {topics.map((topic) => (
-          <ListItem button key={topic} onClick={() => handleClick(topic)}>
+          <ListItem
+            button
+            sx={{
+              textAlign: "center",
+              "&:hover": {
+                backgroundColor: "rgba(83, 80, 80, 0.8)",
+                color: "#fff",
+              },
+            }}
+            key={topic}
+            onClick={() => handleClick(topic)}
+          >
             <ListItemText primary={topic} />
           </ListItem>
         ))}
