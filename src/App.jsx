@@ -7,7 +7,7 @@ import { ThemeContext } from "./context/Theme";
 import { useContext } from "react";
 import { SingleArticle } from "./components/Articles/SingleArticle";
 import SignIn from "./components/SignIn";
-import {SignUp} from './components/SignUp'
+import {SignUp} from "./components/SignUp";
 
 function App() {
   const { theme } = useContext(ThemeContext);
