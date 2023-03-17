@@ -49,7 +49,11 @@ export const Articles = () => {
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentPage, topic, sort_by, order]);
+
+   useEffect(() => {
+     setCurrentPage(1);
+   }, [topic]);
 
   return (
     <>
