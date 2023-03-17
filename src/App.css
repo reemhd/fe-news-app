@@ -141,21 +141,21 @@ a {
 
 @media only screen and (max-width: 425px) {
   .trial > .css-19d1di9-MuiPaper-root-MuiCard-root {
-    height: 450px;
-    width: 259px;
+    height: 450px !important;
+    width: 259px !important;
   }
 }
 
 @media only screen and (max-width: 425px) {
   .trial > .css-ilmzh3-MuiPaper-root-MuiCard-root {
-    height: 450px;
-    width: 259px;
+    height: 450px !important;
+    width: 259px !important;
   }
 }
 
 
 .css-19d1di9-MuiPaper-root-MuiCard-root:hover {
-  background-color: rgb(233, 232, 232);
+  background-color: rgb(233, 232, 232) !important;
 }
 
 .article-card__img {
