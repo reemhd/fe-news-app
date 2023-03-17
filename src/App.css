@@ -41,6 +41,7 @@
   align-items: center;
   padding: 1rem;
   background-color: rgb(59, 58, 61);
+  padding-bottom: 0;
 }
 
 .header img {
@@ -53,6 +54,13 @@
 
 .header__profile p {
   color: white;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
@@ -85,13 +93,11 @@
   background-color: #202424;
   color: #fbfbfb;
   --border-color: #d4d2d2;
-
 }
 
 .light {
   background-color: #ffffff;
   color: #161c1d;
-
 }
 
 .ToggleLightMode--inline-text {
@@ -244,7 +250,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .error  {
+  .error {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -260,5 +266,5 @@
 
 .error-text {
   font-size: 40px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
