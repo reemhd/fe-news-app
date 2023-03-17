@@ -1,6 +1,7 @@
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { Card } from "@mui/material";
+import { ThemeContext } from "../../context/Theme";
 
 export const ArticleCard = ({ article }) => {
   const {
@@ -9,26 +10,33 @@ export const ArticleCard = ({ article }) => {
     title,
     topic,
     article_img_url,
-    comment_count,
-    votes,
-    created_at
+    created_at,
   } = article;
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <li key={article_id} className="article-card">
-      <Link to={`/articles/${article_id}`} className="article-card__link">
-        <h2>{title}</h2>
-        <h3>{author}</h3>
-        <p>{new Date(created_at).toLocaleDateString()}</p>
-        <img
-          src={article_img_url}
-          alt="article img"
-          className="article-card__img"
-        />
-      </Link>
-      <p>{topic}</p>
-      <p>Votes: {votes}</p>
-      <p>Comments: {comment_count}</p>
-    </li>
+    <div className={`trial ${theme}`}>
+      <Card
+        sx={{
+          width: 500,
+          marginTop: 5,
+          padding: 5,
+          backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
+          color: theme === "dark" ? "#fbfbfb" : "#161c1d",
+        }}
+      >
+          <Link to={`/articles/${article_id}`}>
+            <h4 className="article-title">{title}</h4>
+            <h5>{author}</h5>
+            <p>{new Date(created_at).toLocaleDateString()}</p>
+            <img
+              src={article_img_url}
+              alt="article img"
+              className="article-card__img"
+            />
+          </Link>
+          <p className="italic">{topic}</p>
+      </Card>
+    </div>
   );
 };
