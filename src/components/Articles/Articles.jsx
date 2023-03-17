@@ -6,13 +6,14 @@ import { TopicsPanel } from "./TopicsPanel";
 import { useLocation } from "react-router-dom";
 import { SortPanel } from "./SortPanel";
 
-export const Articles = () => {
+export const Articles = ({ searchTerm = undefined, setSearchTerm }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [errorCode, setErrorCode] = useState(null);
   const [errorAPI, setErrorAPI] = useState(null);
+  const location = useLocation();
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -65,13 +66,20 @@ export const Articles = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [topic]);
+    setSearchTerm("");
+  }, [topic, location, setSearchTerm]);
+
+  let filteredArticles = [];
+  if (searchTerm !== undefined) {
+    filteredArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
 
   if (topic && errorCode) {
     return (
-      <div className="error error-text">
-        {`${errorCode} / Topic Not Found`}
-      </div>
+      <div className="error error-text">{`${errorCode} / Topic Not Found`}</div>
     );
   }
 
@@ -80,6 +88,7 @@ export const Articles = () => {
       <div className="error error-text">{`${errorCode} / ${errorAPI}`}</div>
     );
   }
+  
 
   return (
     <>
@@ -89,9 +98,13 @@ export const Articles = () => {
       </div>
       <div className="articles-container">
         <ul className="articles-container__list">
-          {articles.map((article, index) => (
-            <ArticleCard key={index} article={article} />
-          ))}
+          {filteredArticles.length === 0 && isDataLoaded ? (
+            <div className="no-articles-message">No articles found</div>
+          ) : (
+            (searchTerm ? filteredArticles : articles).map((article, index) => (
+              <ArticleCard key={index} article={article} />
+            ))
+          )}
         </ul>
         {isLoading && (
           <div className="loading">
@@ -101,4 +114,6 @@ export const Articles = () => {
       </div>
     </>
   );
+
+
 };
