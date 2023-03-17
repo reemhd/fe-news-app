@@ -88,15 +88,14 @@ export const Articles = ({ searchTerm = undefined, setSearchTerm }) => {
       <div className="error error-text">{`${errorCode} / ${errorAPI}`}</div>
     );
   }
-  
 
   return (
     <>
       <div>
         <TopicsPanel />
-        {isDataLoaded && <SortPanel topic={topic} />}
       </div>
       <div className="articles-container">
+        {isDataLoaded && <SortPanel topic={topic} />}
         <ul className="articles-container__list">
           {filteredArticles.length === 0 && isDataLoaded ? (
             <div className="no-articles-message">No articles found</div>
