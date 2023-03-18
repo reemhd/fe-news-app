@@ -94,7 +94,7 @@ export const Articles = ({ searchTerm = undefined, setSearchTerm }) => {
       <div>
         <TopicsPanel />
       </div>
-      <div className="articles-container">
+      <div className={!isDataLoaded ? "" : "articles-container"}>
         {isDataLoaded && <SortPanel topic={topic} />}
         <ul className="articles-container__list">
           {filteredArticles.length === 0 && isDataLoaded ? (
@@ -113,6 +113,4 @@ export const Articles = ({ searchTerm = undefined, setSearchTerm }) => {
       </div>
     </>
   );
-
-
 };

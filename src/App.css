@@ -35,9 +35,8 @@
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> HEADER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-a {
-  color: #858586 !important;
-  text-decoration: none;
+.colour {
+  color: rgb(147, 146, 146);
 }
 
 .header {
@@ -70,20 +69,7 @@ a {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
 
-.footer__bottom_nav {
-  background-color: rgb(59, 58, 61) !important;
-}
-
-.MuiBottomNavigationAction-label {
-  color: white;
-}
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> THEME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 :root {
@@ -129,35 +115,6 @@ a {
   justify-content: center;
 }
 
-.css-19d1di9-MuiPaper-root-MuiCard-root {
-  width: 50px;
-  /* height: 638px; */
-  gap: 1;
-}
-
-.trial > .css-19d1di9-MuiPaper-root-MuiCard-root {
-  height: 550px;
-}
-
-@media only screen and (max-width: 425px) {
-  .trial > .css-19d1di9-MuiPaper-root-MuiCard-root {
-    height: 450px !important;
-    width: 259px !important;
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  .trial > .css-ilmzh3-MuiPaper-root-MuiCard-root {
-    height: 450px !important;
-    width: 259px !important;
-  }
-}
-
-
-.css-19d1di9-MuiPaper-root-MuiCard-root:hover {
-  background-color: rgb(233, 232, 232) !important;
-}
-
 .article-card__img {
   max-width: 100%;
   height: auto;
@@ -175,7 +132,7 @@ a {
 
 .italic {
   font-style: italic;
-  color: #484646;
+  color: #636363;
 }
 
 .single-article {
@@ -253,14 +210,6 @@ a {
 /* >>>>>>>>>>>>>>>>>>>>>>>>> Topics <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 
-.css-bshv44-MuiButtonBase-root-MuiListItem-root {
-  background-color: rgba(83, 80, 80, 0.51) !important;
-}
-
-.css-bshv44-MuiButtonBase-root-MuiListItem-root:hover {
-  background-color: rgb(110, 108, 108) !important;
-}
-
 /* >>>>>>>>>>>>>>>>>>>>>>>>> Sign In <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 .sign_in__header {
@@ -270,8 +219,7 @@ a {
 }
 
 .row > * {
-  padding-top: 130px;
-  padding-bottom: 310px;
+  padding-top: 50px;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>> Error <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */

@@ -18,24 +18,48 @@ export const ArticleCard = ({ article }) => {
     <div className={`trial ${theme}`}>
       <Card
         sx={{
-          width: 500,
+          width: "100%",
+          maxWidth: 500,
+          height: 600,
           marginTop: 5,
+          gap: 1,
           padding: 5,
-          backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
-          color: theme === "dark" ? "#fbfbfb" : "#161c1d",
+          backgroundColor: theme === "dark" ? "#161c1d" : "rgb(238, 238, 238)",
+          color: theme === "dark" ? "#fbfbfb" : "rgb(61, 61, 61)",
+          "@media (max-width: 425px)": {
+            height: 500,
+            maxWidth: "100%",
+            padding: 3,
+          },
+          "&:hover": {
+            backgroundColor:
+              theme === "dark" ? "rgb(64, 64, 64)" : "rgb(198, 198, 198)",
+          },
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
-          <Link to={`/articles/${article_id}`}>
-            <h4 className="article-title">{title}</h4>
-            <h5>{author}</h5>
-            <p>{new Date(created_at).toLocaleDateString()}</p>
-            <img
-              src={article_img_url}
-              alt="article img"
-              className="article-card__img"
-            />
-          </Link>
-          <p className="italic">{topic}</p>
+        <Link
+          to={`/articles/${article_id}`}
+          style={{
+            color: theme === "dark" ? "rgb(238, 238, 238)" : "rgb(61, 61, 61)",
+            textDecoration: "none",
+          }}
+        >
+          <h4 className="article-title" style={{ flex: 1 }}>
+            {title}
+          </h4>
+          <h5 style={{ flex: 1 }}>{author}</h5>
+          <p>{new Date(created_at).toLocaleDateString()}</p>
+          <img
+            src={article_img_url}
+            alt="article img"
+            className="article-card__img"
+            style={{ flex: 1 }}
+          />
+        </Link>
+        <p className="italic">{topic}</p>
       </Card>
     </div>
   );

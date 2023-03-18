@@ -46,15 +46,13 @@ export const SortPanel = ({ topic }) => {
       <Select
         value={selectedSort}
         onChange={handleSortChange}
-        id="sorting-select"
         displayEmpty
         sx={{
           width: 110,
           height: 25,
-          marginLeft: 2,
           backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
           color: theme === "dark" ? "#fbfbfb" : "#161c1d",
-          border: theme === "dark" ? "1px solid white" : "",
+          border: theme === "dark" ? "1px solid rgb(147, 146, 146)" : "",
         }}
       >
         <MenuItem value="" disabled>

@@ -32,9 +32,10 @@ export const TopicsPanel = () => {
           <ListItem
             button
             sx={{
+              backgroundColor: "rgba(128, 125, 125, 0.51)",
               textAlign: "center",
               "&:hover": {
-                backgroundColor: "rgba(83, 80, 80, 0.8)",
+                backgroundColor: "rgba(48, 47, 47, 0.51)",
                 color: "#fff",
               },
             }}
