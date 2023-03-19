@@ -2,9 +2,7 @@
 
 ## About This Project
 
-Welcome to **NC News** - a refreshing news app dedicated to delivering information on a variety of topics!
-
-Explore and discover articles using filtering and sorting options, and engage with the content through voting and commenting on your favorite stories.
+Welcome to **NC News** - a refreshing news app dedicated to delivering information on a variety of topics.
 
 This project is powered by an API backend using Node.js and Express, which you can find at the following repository: [News API](https://github.com/reemhd/News-API)
 
@@ -23,7 +21,7 @@ To run this project locally, follow these steps:
 
 1. Clone this repository: 
 ```
-git clone https://github.com/yourusername/nc-news.git
+git clone https://github.com/reemhd/nc-news.git
 ```
 2. Change into the project directory:
 ```
