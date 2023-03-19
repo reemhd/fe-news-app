@@ -4,9 +4,9 @@
 
 Welcome to **NC News** - a refreshing news app dedicated to delivering information on a variety of topics.
 
-This project is powered by an API backend using Node.js and Express, which you can find at the following repository: [News API](https://github.com/reemhd/News-API)
-
 A hosted version of the project is available here: [News](https://newsreactproject.netlify.app)
+
+This project is powered by an API backend using Node.js and Express, which you can find at the following repository: [News API](https://github.com/reemhd/News-API)
 
 ## Features
 
