@@ -25,7 +25,7 @@ git clone https://github.com/reemhd/fe-news-app.git
 ```
 2. Change into the project directory:
 ```
-cd nc-news
+cd fe-news-app
 ```
 3. Install the dependencies:
 ```
