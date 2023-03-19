@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
-import placeholder from "../logo/placeholder.png";
-import Face2Icon from "@mui/icons-material/Face2";
+import logo from "../assets/logo.png";
+import FaceIcon from "@mui/icons-material/Face";
 import ToggleLightMode from "./ToggleLightMode";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUser";
 import { TextField } from "@mui/material";
+import { ThemeContext } from "../context/Theme";
 
 export const Header = ({ searchTerm, setSearchTerm }) => {
   const { currentUser, logout } = useContext(CurrentUserContext);
+  const { theme } = useContext(ThemeContext);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -17,7 +19,7 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
     <>
       <header className="header">
         <Link to={"/"}>
-          <img src={placeholder} alt="logo" />
+          <img src={logo} alt="logo" />
         </Link>
         <ToggleLightMode />
         {currentUser ? (
@@ -29,11 +31,23 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
             </button>
           </div>
         ) : (
-          <Link to={"/signin"}>
-            <button className="header__no_profile">
-              <Face2Icon />
-            </button>
-          </Link>
+          <div className="face-signin">
+            <div className="face">
+              <FaceIcon />
+            </div>
+            <Link
+              to={"/signin"}
+              style={{
+                color:
+                  theme === "dark"
+                    ? "rgb(238, 238, 238)"
+                    : "rgb(203, 201, 201)",
+                textDecoration: "none",
+              }}
+            >
+              <p className="signin">Sign in</p>
+            </Link>
+          </div>
         )}
       </header>
       <div className="header search">

@@ -59,7 +59,7 @@ export const SingleArticle = () => {
     <div className={`single-article ${theme}`}>
       <Card
         sx={{
-          width: 500,
+          width: 600,
           marginTop: 5,
           padding: 5,
           backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
@@ -67,7 +67,7 @@ export const SingleArticle = () => {
         }}
       >
         <h2>{article.title}</h2>
-        <p>{article.topic}</p>
+        <p className="single-article__topic">{article.topic}</p>
         <h3>{article.author}</h3>
         <img
           src={article.article_img_url}

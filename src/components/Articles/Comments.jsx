@@ -63,6 +63,12 @@ export const Comments = ({ article_id }) => {
             marginTop: 2,
             backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
             color: theme === "dark" ? "#fbfbfb" : "#161c1d",
+            "&:hover": {
+              backgroundColor:
+                theme === "dark"
+                  ? "rgb(64, 64, 64)"
+                  : "rgba(229, 228, 228, 0.72)",
+            },
           }}
         >
           <CardContent>

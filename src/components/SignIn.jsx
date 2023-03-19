@@ -9,7 +9,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import { Link, useNavigate } from "react-router-dom";
-import placeholder from "../logo/placeholder.png";
+import logo from "../assets/logo.png";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import { fetchUserByUsername } from "../utils/api";
 import { CurrentUserContext } from "../context/CurrentUser";
@@ -38,7 +38,7 @@ function SignIn() {
     <>
       <div className="sign_in__header">
         <Link to={"/"}>
-          <img src={placeholder} alt="logo" />
+          <img src={logo} alt="logo" />
         </Link>
       </div>
       {error && <Alert severity="error">{error}</Alert>}
