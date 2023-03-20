@@ -110,6 +110,13 @@ export const Articles = ({ searchTerm = undefined, setSearchTerm }) => {
             <CircularProgress />
           </div>
         )}
+        {currentPage !== 1 ? (<button
+          className="scroll-to-top-button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          Scroll to Top
+        </button>) : <></>}
+        
       </div>
     </>
   );

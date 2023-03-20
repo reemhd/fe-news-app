@@ -190,6 +190,19 @@
   text-align: center;
 }
 
+ .scroll-to-top-button {
+   position: fixed;
+   bottom: 0px;
+   right: 20px;
+   padding: 5px;
+   background-color: rgba(230, 230, 230, 0.5);
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
 /* >>>>>>>>>>>>>>>>>>>>>>>>> Comments <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 .comment-adder__user-submit {

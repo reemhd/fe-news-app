@@ -50,6 +50,8 @@ export const SortPanel = ({ topic }) => {
         sx={{
           width: 110,
           height: 25,
+          marginTop: 1,
+          marginLeft: 1,
           backgroundColor: theme === "dark" ? "#161c1d" : "#fbfbfb",
           color: theme === "dark" ? "#fbfbfb" : "#161c1d",
           border: theme === "dark" ? "1px solid rgb(147, 146, 146)" : "",
