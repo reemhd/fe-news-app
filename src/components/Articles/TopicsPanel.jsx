@@ -38,6 +38,9 @@ export const TopicsPanel = () => {
                 backgroundColor: "rgba(48, 47, 47, 0.51)",
                 color: "#fff",
               },
+              borderRadius: 1,
+              margin: 1,
+              boxShadow: "2px 5px 10px rgba(0, 0, 0, 0.25)",
             }}
             key={topic}
             onClick={() => handleClick(topic)}
