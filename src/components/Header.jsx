@@ -16,8 +16,8 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <>
-      <header className="header">
+    <div className="head">
+      <div className="header">
         <Link to={"/"}>
           <img src={logo} alt="logo" />
         </Link>
@@ -49,8 +49,8 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
             </Link>
           </div>
         )}
-      </header>
-      <div className="header search">
+      </div>
+      <div className=" search">
         <TextField
           id="outlined-search"
           type="search"
@@ -62,6 +62,6 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
           className="textfield-search"
         />
       </div>
-    </>
+    </div>
   );
 };
