@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import logo from "../assets/logo.png";
-import FaceIcon from "@mui/icons-material/Face";
+import logo1 from "../assets/logo1.png";
 import ToggleLightMode from "./ToggleLightMode";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUser";
@@ -19,9 +18,18 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
     <div className="head">
       <div className="header">
         <Link to={"/"}>
-          <img src={logo} alt="logo" />
+          <img src={logo1} alt="logo" />
         </Link>
-        <ToggleLightMode />
+        <TextField
+          id="outlined-search"
+          type="search"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="Search"
+          variant="outlined"
+          InputProps={{ style: { color: "white", height: "30px" } }}
+          className="textfield-search"
+        />
         {currentUser ? (
           <div className="header__profile">
             <img src={currentUser.avatar_url} alt="avatar" />
@@ -32,9 +40,6 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
           </div>
         ) : (
           <div className="face-signin">
-            <div className="face">
-              <FaceIcon />
-            </div>
             <Link
               to={"/signin"}
               style={{
@@ -50,17 +55,8 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
           </div>
         )}
       </div>
-      <div className=" search">
-        <TextField
-          id="outlined-search"
-          type="search"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          placeholder="Search"
-          variant="outlined"
-          InputProps={{ style: { color: "white", height: "30px" } }}
-          className="textfield-search"
-        />
+      <div className="search">
+        <ToggleLightMode />
       </div>
     </div>
   );
