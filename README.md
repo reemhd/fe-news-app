@@ -8,6 +8,8 @@ Welcome to **NC News** - a news app dedicated to delivering information on a var
 
 A hosted version of the project is available here: [NC News](https://newsreactproject.netlify.app)
 
+Note: The API is hosted on a free-tier plan, which may result in longer initial load times as the server spins up
+
 This project is powered by an API backend using Node.js, Express and PostgreSQL which you can find at the following repository: [News API](https://github.com/reemhd/News-API)
 
 ## Features
